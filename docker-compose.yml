@@ -1,0 +1,13 @@
+version: '3.9'
+
+services:
+  api:
+    image: producer-consumer
+    container_name: producer_consumer
+    command: "uvicorn --host 0.0.0.0 --port 8000 --lifespan off --reload src.asgi:application"
+    volumes:
+      - .:/home/python/code
+    ports:
+      - "8000:8000"
+    stdin_open: true
+    tty: true
